@@ -20,7 +20,7 @@ const LazyLoadComponent: NextPage<Props> = ({ users }) => (
       <h1>Lazy Load</h1>
     </Layout>
 
-    {users.map((user: User) => (
+    {users && users.map((user: User) => (
       <Layout key={user.id}>
         ID:
         {user.name}
