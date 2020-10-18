@@ -6,6 +6,8 @@ module.exports = {
     'everywhere/jest',
   ],
   rules: {
-    'import/extensions': "never",
+    'import/extensions': 0,
+    'no-shadow': 0,
+    '@typescript-eslint/no-explicit-any': 0,
   },
 }

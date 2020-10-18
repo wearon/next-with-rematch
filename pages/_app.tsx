@@ -1,24 +1,21 @@
-
 /* eslint-disable import/extensions */
 import React from 'react'
-import withRedux from 'next-redux-wrapper'
 import { AppContext, AppInitialProps, AppProps } from 'next/app'
 import Head from 'next/head'
 import { Global, css } from '@emotion/core'
 import { Provider } from 'react-redux'
-import { Store } from 'redux'
-import { configureStore } from '../store/configureStore'
 import { Menu } from '../components/Menu'
 import { normalize } from '../constants/normalize'
+import { RootState, store } from '../rematch/store'
 
-type Props = { store: Store } & AppInitialProps & AppProps
+type Props = { store: RootState } & AppInitialProps & AppProps
 
 type AppPage<P = {}> = {
   (props: P): JSX.Element | null
   getInitialProps: ({ Component, ctx }: AppContext) => Promise<AppInitialProps>
 }
 
-const App: AppPage<Props> = ({ store, pageProps, Component }) => {
+const App: AppPage<Props> = ({ pageProps, Component }) => {
   return (
     <>
       <Head>
@@ -47,4 +44,4 @@ App.getInitialProps = async ({ Component, ctx }: AppContext) => {
   }
 }
 
-export default withRedux(configureStore)(App)
+export default App
